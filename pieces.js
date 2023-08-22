@@ -94,4 +94,5 @@ for(let i=0; i < noms.length ; i++){
    abordablesElements.appendChild(nomElement)
 }
 // Ajout de l'en-tête puis de la liste au bloc résultats filtres
-document.querySelector('.abordables').appendChild(abordablesElements);
+document.querySelector('.abordables')
+.appendChild(abordablesElements);
