@@ -96,3 +96,22 @@ for(let i=0; i < noms.length ; i++){
 // Ajout de l'en-tête puis de la liste au bloc résultats filtres
 document.querySelector('.abordables')
 .appendChild(abordablesElements);
+
+//code
+const nomsDispo = pieces.map(piece => piece.nom);
+const prix = pieces.map(piece => piece.prix);
+for(let i = pieces.length -1; i >= 0; i--){
+    if ("disponibilite"== true) {
+        nomsDispo.splice(i,1);
+        prix.splice(i,1);
+    }
+}
+//create liste
+const disponibleElements = document.createElement('ul');
+for (let i = 0; i < nomsDispo.length; i++) {
+    const nomElementDispo = document.createElement('li');
+    nomElementDispo.innerText = nomsDispo[i] + " - " + prix[i];
+    disponibleElements.appendChild(nomElementDispo);
+}
+document.querySelector('.disponibles')
+.appendChild(disponibleElements);
