@@ -34,20 +34,45 @@ for (let i = 0; i < pieces.length; i++) {
     articleElement.appendChild(stockElement);
 }
 
+//le trie
+const boutonTrier =  document.querySelector('.btn-trier');
+boutonTrier.addEventListener("click", function(){
+    //Puis il nous faut réordonner les éléments de la liste en fonction de leur
+    //prix. Pour cela, nous utilisons la fonction sort qui prend en argument…
+    //une nouvelle fonction anonyme
+    const piecesOrdonnees = Array.from(pieces); //on copie les pieces dans cette var
+    piecesOrdonnees.sort(function (a, b) {
+        return a.prix - b.prix;
+    });
+     console.log(piecesOrdonnees);
+});
 
-
- // // Récupération de l'élément du DOM qui accueillera les fiches
-    // const sectionFiches = document.querySelector(".fiches");
-    // // Création d’une balise dédiée à une pièce automobile
-    // const pieceElement = document.createElement("article");
-    // // On crée l’élément img.
-    // const imageElement = document.createElement("img");
-    // // On accède à l’indice i de la liste pieces pour configurer la source de l’image.
-    // imageElement.src = pieces[i].image;
-    // // Idem pour le nom, le prix et la catégorie...
-
-    // // On rattache la balise article à la section Fiches
-    // sectionFiches.appendChild(pieceElement);
-    // // On rattache l’image à pieceElement (la balise article)
-    // pieceElement.appendChild(imageElement);
-    // // Idem pour le nom, le prix et la catégorie...
+//le filtrage
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+boutonFiltrer.addEventListener("click", function () {
+    // la fonction filter. Elle prend en argument une fonction anonyme qui sera
+    // appelée une fois par élément de la liste. La fonction anonyme prend un
+    // paramètre : l’élément à tester, qui se trouvera ou non dans la liste filtrée.
+    const piecesFiltrees = pieces.filter(function (piece) {
+        return piece.prix <= 35;
+    });
+});
+//affiche les articles qui ont une description
+const btnDescription = document.querySelector('.btn-description');
+btnDescription.addEventListener('click', function() {
+    const descriptionFilt = pieces.filter(function(piece) {
+        return piece.description
+    });
+});
+//trier en ordre decroissant
+const btnDecrois =  document.querySelector('.btn-detrier');
+btnDecrois.addEventListener("click", function(){
+    //Puis il nous faut réordonner les éléments de la liste en fonction de leur
+    //prix. Pour cela, nous utilisons la fonction sort qui prend en argument…
+    //une nouvelle fonction anonyme
+    const piecesOrdonnees = Array.from(pieces); //on copie les pieces dans cette var
+    piecesOrdonnees.sort(function (a, b) {
+        return b.prix - a.prix;
+    });
+     console.log(piecesOrdonnees);
+});
