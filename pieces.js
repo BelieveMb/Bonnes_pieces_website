@@ -1,4 +1,52 @@
-//récuperation de données depuis le fichier JSON
+// Récupération des pièces depuis le fichier JSON
+const pieces = await fetch("pieces-autos.json").then(pieces => pieces.json());
+ 
+// Fonction qui génère toute la page web
+function genererPieces(pieces) {
+  for (let i = 0; i < pieces.length; i++) {
+       // Création d’une balise dédiée à une pièce auto
+       const pieceElement = document.createElement("article");
+       // On crée l’élément img.
+       const imageElement = document.createElement("img");
+       // On accède à l’indice i de la liste pieces pour configurer la source de l’image.
+       imageElement.src = pieces[i].image;
+       // On rattache l’image à pieceElement (la balise article)
+       pieceElement.appendChild(imageElement);
+       // Idem pour le nom, le prix et la catégorie ...
+       // ...    
+       // On rattache la balise article au body
+       document.body.appendChild(pieceElement);
+  }
+ 
+}
+ 
+// Premier affichage de la page
+genererPieces(pieces);
+ 
+// Ajout du listener pour trier les pièces par ordre de prix croissant
+const boutonTrier = document.querySelector(".btn-trier");
+boutonTrier.addEventListener("click", function () {
+   const piecesOrdonnees = Array.from(pieces)
+   piecesOrdonnees.sort(function (a, b) {
+       return b.prix - a.prix;
+   });
+  // Effacement de l'écran et regénération de la page
+  document.querySelector(".fiches").innerHTML = "";
+  genererPieces(piecesOrdonnees);
+});
+ 
+// Ajout du listener pour filtrer les pièces non abordables
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+boutonFiltrer.addEventListener("click", function () {
+   const piecesFiltrees = pieces.filter(function (piece) {
+       return piece.disponibilite;
+   });
+   // Effacement de l'écran et regénération de la page avec les pièces filtrées uniquement
+  document.querySelector(".fiches").innerHTML = "";
+  genererPieces(piecesFiltrees);
+});
+
+/*récuperation de données depuis le fichier JSON
 const reponse =  await fetch('pieces-autos.json');
 const pieces =  await reponse.json();
 //la boucle for
@@ -101,7 +149,8 @@ document.querySelector('.abordables')
 const nomsDispo = pieces.map(piece => piece.nom);
 const prix = pieces.map(piece => piece.prix);
 for(let i = pieces.length -1; i >= 0; i--){
-    if ("disponibilite"== true) {
+    // if ("disponibilite"== true) {
+    if (pieces[i].disponibilite === false) {
         nomsDispo.splice(i,1);
         prix.splice(i,1);
     }
@@ -114,4 +163,4 @@ for (let i = 0; i < nomsDispo.length; i++) {
     disponibleElements.appendChild(nomElementDispo);
 }
 document.querySelector('.disponibles')
-.appendChild(disponibleElements);
+.appendChild(disponibleElements);*/
