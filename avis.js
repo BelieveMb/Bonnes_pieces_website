@@ -1,9 +1,4 @@
-function comptLetter(a, n){
-    return a.charAt(n);
-}
-let tourne;
-tourne = comptLetter('just',2);
-console.log(tourne);
+//export c'est pour rendre cette function disponible en dehors du fichier
 export function ajoutListenersAvis() {
     const piecesElements = document.querySelectorAll(".fiches article button");
 
