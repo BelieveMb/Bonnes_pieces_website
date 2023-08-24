@@ -25,6 +25,9 @@ function genererPieces(pieces){
         descriptionElement.innerText = article.description ?? "Pas de description pour le moment.";
         const stockElement = document.createElement("p");
         stockElement.innerText = article.disponibilite ? "En stock" : "Rupture de stock";
+        const btnAvis = document.createElement("button");
+        btnAvis.innerText = "Donner un Avis";
+
         
         // On rattache la balise article a la section Fiches
         sectionFiches.appendChild(pieceElement);
@@ -36,6 +39,7 @@ function genererPieces(pieces){
         //Ajout des éléments au DOM pour l'exercice
         pieceElement.appendChild(descriptionElement);
         pieceElement.appendChild(stockElement);
+        pieceElement.appendChild(btnAvis);
     
     }
      // Ajout de la fonction ajoutListenersAvis--Page avis.js
