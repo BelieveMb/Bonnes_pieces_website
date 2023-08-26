@@ -25,13 +25,12 @@ export function ajoutListenersAvis() {
 export function ajoutListenerEnvoyerAvis() {
   const formulaireAvis = document.querySelector(".formulaire-avis");
   formulaireAvis.addEventListener("submit", function (event) {
-  /* ... */
     // Désactivation du comportement par défaut du navigateur
     event.preventDefault();
     // Création de l’objet du nouvel avis. et recuperer les entrées du
     // formulaire
     
-    const avis = {
+    const avis = { //cette objet reprend le champs du form et crée une propriéte pour chacun d'entre eux
       pieceId: parseInt(event.target.querySelector("[name=piece-id]").value),
       utilisateur: event.target.querySelector("[name=utilisateur").value,
       commentaire: event.target.querySelector("[name=commentaire]").value,
