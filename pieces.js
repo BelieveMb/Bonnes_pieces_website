@@ -48,8 +48,8 @@ function genererPieces(pieces){
         pieceElement.appendChild(btnAvis);
     
     }
-     // Ajout de la fonction ajoutListenersAvis--Page avis.js
-     ajoutListenersAvis();
+    // Ajout de la fonction ajoutListenersAvis--Page avis.js
+    ajoutListenersAvis();
 }
 
 genererPieces(pieces);
