@@ -6,8 +6,10 @@
 //import de la fonction depuis avis.js
 import { ajoutListenersAvis, ajoutListenerEnvoyerAvis } from "./avis.js";
 // Récupération des pièces depuis le fichier JSON
-const reponse = await fetch('http://localhost:8081/pieces/');
-const pieces = await reponse.json();
+// const reponse = await fetch('http://localhost:8081/pieces/');
+// const pieces = await reponse.json();
+//transformer ces deux lignes en une ligne avec les promises
+const pieces = await fetch("http://localhost:8081/pieces").then(pieces => pieces.json());
  
 // Transformation des pièces en JSON
 const valeurPieces = JSON.stringify(pieces);
